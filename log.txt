@@ -1,0 +1,148 @@
+2026-01-20 17:55:57 - INFO - ================================================================================
+2026-01-20 17:55:57 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 17:55:57 - INFO - ================================================================================
+2026-01-20 17:55:58 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 17:55:58 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 17:56:15 - DEBUG - FFmpeg available: ffmpeg version 7.1-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+2026-01-20 17:56:22 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 2 video files
+2026-01-20 18:41:31 - INFO - ================================================================================
+2026-01-20 18:41:31 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 18:41:31 - INFO - ================================================================================
+2026-01-20 18:41:31 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 18:41:31 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 18:56:23 - INFO - ================================================================================
+2026-01-20 18:56:23 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 18:56:23 - INFO - ================================================================================
+2026-01-20 18:56:23 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 18:56:23 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 18:56:28 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 2 videos, 0 images, 2 gifs
+2026-01-20 18:58:10 - INFO - ================================================================================
+2026-01-20 18:58:10 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 18:58:10 - INFO - ================================================================================
+2026-01-20 18:58:10 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 18:58:10 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 18:58:14 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 1 gifs
+2026-01-20 19:13:01 - INFO - ================================================================================
+2026-01-20 19:13:01 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 19:13:01 - INFO - ================================================================================
+2026-01-20 19:13:01 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 19:13:02 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 19:21:50 - INFO - ================================================================================
+2026-01-20 19:21:50 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 19:21:50 - INFO - ================================================================================
+2026-01-20 19:21:50 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 19:21:50 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 19:25:59 - INFO - ================================================================================
+2026-01-20 19:25:59 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 19:25:59 - INFO - ================================================================================
+2026-01-20 19:25:59 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 19:25:59 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:42:43 - INFO - ================================================================================
+2026-01-20 20:42:43 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 20:42:43 - INFO - ================================================================================
+2026-01-20 20:42:43 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:42:43 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:46:14 - INFO - ================================================================================
+2026-01-20 20:46:14 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 20:46:14 - INFO - ================================================================================
+2026-01-20 20:46:14 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:46:14 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:46:50 - INFO - ================================================================================
+2026-01-20 20:46:50 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 20:46:50 - INFO - ================================================================================
+2026-01-20 20:46:50 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:46:50 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:47:27 - INFO - ================================================================================
+2026-01-20 20:47:27 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 20:47:27 - INFO - ================================================================================
+2026-01-20 20:47:28 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:47:28 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:48:03 - INFO - ================================================================================
+2026-01-20 20:48:03 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 20:48:03 - INFO - ================================================================================
+2026-01-20 20:48:03 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 20:48:04 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:28:06 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 0 gifs
+2026-01-20 21:36:59 - INFO - ================================================================================
+2026-01-20 21:36:59 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 21:36:59 - INFO - ================================================================================
+2026-01-20 21:36:59 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:36:59 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:39:37 - INFO - ================================================================================
+2026-01-20 21:39:37 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 21:39:37 - INFO - ================================================================================
+2026-01-20 21:39:37 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:39:37 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:40:36 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 0 gifs
+2026-01-20 21:40:39 - INFO - Output folder selected: C:/Users/Mongoose/Desktop/mo
+2026-01-20 21:40:39 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 0 gifs
+2026-01-20 21:40:43 - DEBUG - FFmpeg available: ffmpeg version 7.1-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+2026-01-20 21:40:43 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 0 gifs
+2026-01-20 21:40:46 - INFO - Processing video: test-anim.mp4
+2026-01-20 21:40:46 - DEBUG - Extracting frames from test-anim.mp4...
+2026-01-20 21:40:46 - INFO - Extracted 73 frames from test-anim.mp4
+2026-01-20 21:40:46 - DEBUG - Running gifski command: C:\ClaudeWorkspace\Easy Bulk GIF Optimizer\gifski\gifski.exe -o C:\Users\Mongoose\Desktop\mo\test-anim.gif --quality 70 --fps 20 --lossy-quality 80 --motion-quality... (73 frames)
+2026-01-20 21:40:46 - INFO - Created GIF: test-anim.gif
+2026-01-20 21:40:46 - INFO - Keeping extracted frames in: C:\Users\Mongoose\Desktop\mo\temp
+2026-01-20 21:40:46 - INFO - Successfully created test-anim.gif (0.47 MB)
+2026-01-20 21:41:57 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 1 gifs
+2026-01-20 21:42:00 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo/temp - Found 0 videos, 73 images, 0 gifs
+2026-01-20 21:42:33 - INFO - Processing group: frame (73 images)
+2026-01-20 21:42:33 - DEBUG - Running gifski command: C:\ClaudeWorkspace\Easy Bulk GIF Optimizer\gifski\gifski.exe -o C:\Users\Mongoose\Desktop\mo\frame.gif --quality 70 --width 320 --fps 20 --lossy-quality... (73 frames)
+2026-01-20 21:42:33 - INFO - Created GIF: frame.gif
+2026-01-20 21:42:33 - INFO - Successfully created frame.gif (0.35 MB)
+2026-01-20 21:43:01 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo/temp - Found 0 videos, 73 images, 0 gifs
+2026-01-20 21:43:09 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 2 gifs
+2026-01-20 21:43:26 - INFO - Optimizing GIF: frame.gif
+2026-01-20 21:43:26 - DEBUG - Running gifski command: C:\ClaudeWorkspace\Easy Bulk GIF Optimizer\gifski\gifski.exe -o C:\Users\Mongoose\Desktop\mo\frame_optim_30q_20fps.gif --quality 30 --width 320 --lossy-quality 80 --motion-quality 80 C:\Users\Mongoose\Desktop\mo\frame.gif
+2026-01-20 21:43:26 - INFO - Optimized GIF: frame_optim_30q_20fps.gif
+2026-01-20 21:43:26 - INFO - Successfully optimized frame_optim_30q_20fps.gif: 0.35 MB → 0.22 MB (37.4% reduction)
+2026-01-20 21:43:26 - INFO - Optimizing GIF: test-anim.gif
+2026-01-20 21:43:26 - DEBUG - Running gifski command: C:\ClaudeWorkspace\Easy Bulk GIF Optimizer\gifski\gifski.exe -o C:\Users\Mongoose\Desktop\mo\test-anim_optim_30q_20fps.gif --quality 30 --width 320 --lossy-quality 80 --motion-quality 80 C:\Users\Mongoose\Desktop\mo\test-anim.gif
+2026-01-20 21:43:26 - INFO - Optimized GIF: test-anim_optim_30q_20fps.gif
+2026-01-20 21:43:26 - INFO - Successfully optimized test-anim_optim_30q_20fps.gif: 0.47 MB → 0.22 MB (53.5% reduction)
+2026-01-20 21:55:25 - INFO - ================================================================================
+2026-01-20 21:55:25 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 21:55:25 - INFO - ================================================================================
+2026-01-20 21:55:25 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:55:26 - INFO - Error scanning input folder: 'MainWindow' object has no attribute 'file_count_label'
+2026-01-20 21:55:30 - INFO - ================================================================================
+2026-01-20 21:55:30 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 21:55:30 - INFO - ================================================================================
+2026-01-20 21:55:30 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:55:30 - INFO - Error scanning input folder: 'MainWindow' object has no attribute 'file_count_label'
+2026-01-20 21:55:43 - INFO - ================================================================================
+2026-01-20 21:55:43 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 21:55:43 - INFO - ================================================================================
+2026-01-20 21:55:43 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:55:43 - INFO - Error scanning input folder: 'MainWindow' object has no attribute 'file_count_label'
+2026-01-20 21:57:19 - INFO - ================================================================================
+2026-01-20 21:57:19 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 21:57:19 - INFO - ================================================================================
+2026-01-20 21:57:20 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:57:20 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 4 gifs
+2026-01-20 21:57:20 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:58:19 - INFO - ================================================================================
+2026-01-20 21:58:19 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 21:58:19 - INFO - ================================================================================
+2026-01-20 21:58:19 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 21:58:19 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 2 gifs
+2026-01-20 21:58:19 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 22:03:37 - INFO - ================================================================================
+2026-01-20 22:03:37 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 22:03:37 - INFO - ================================================================================
+2026-01-20 22:03:37 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 22:03:37 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 2 gifs
+2026-01-20 22:03:38 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 22:05:40 - INFO - ================================================================================
+2026-01-20 22:05:40 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 22:05:40 - INFO - ================================================================================
+2026-01-20 22:05:40 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 22:05:40 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 2 gifs
+2026-01-20 22:05:40 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 22:07:10 - INFO - ================================================================================
+2026-01-20 22:07:10 - INFO - Easy Bulk GIF Optimizer - Application Started
+2026-01-20 22:07:10 - INFO - ================================================================================
+2026-01-20 22:07:10 - DEBUG - gifski available: gifski 1.32.0
+2026-01-20 22:07:11 - INFO - Input folder selected: C:/Users/Mongoose/Desktop/mo - Found 1 videos, 0 images, 2 gifs
+2026-01-20 22:07:11 - DEBUG - gifski available: gifski 1.32.0
