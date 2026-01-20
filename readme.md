@@ -4,6 +4,12 @@
 
 A simple Windows application for bulk GIF creation and optimization.
 
+Also available for download here too: https://reactorcore.itch.io/easy-bulk-gif-optimizer
+
+![itch cover](https://github.com/user-attachments/assets/b3ab771e-0bdb-4f94-8ab3-224b7da5dfbb)
+
+<img width="902" height="954" alt="easy gif bulk optimizer screenshot" src="https://github.com/user-attachments/assets/9ec194c6-8164-48b5-b30f-f8aa1579659b" />
+
 ---
 
 ## What Does This Do?
