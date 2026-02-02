@@ -140,13 +140,15 @@ class BatchProcessor:
             return None
 
         def wrapper(current, total):
-            message = f"Processing {current}/{total}..."
-            self.progress_callback(current, total, message)
+            # Calculate percentage
+            progress = (current / total * 100) if total > 0 else 0
+            # Update with detailed message
+            self.progress_callback(current, total, f"Processing file {current} of {total} ({progress:.0f}%)")
 
         return wrapper
 
     def _wrap_status_callback(self):
-        """Wrap status callback to log messages."""
+        """Wrap status callback to pass through status messages."""
         if not self.log_callback:
             return None
 
@@ -219,15 +221,17 @@ class BatchProcessor:
                 if not is_test and output_path.exists():
                     log_info(f"Skipped {video_path.name} (already processed)")
                     stats['skipped'] += 1
+                    file_num = i + 1
                     if status_callback:
-                        status_callback(f"Skipped {video_path.name} (already exists)")
+                        status_callback(f"[{file_num}/{stats['total']}] Skipped {video_path.name} (already exists)")
                     if progress_callback:
                         progress_callback(i + 1, stats['total'])
                     continue
 
                 # Update status
+                file_num = i + 1
                 if status_callback:
-                    status_callback(f"Processing {video_path.name}...")
+                    status_callback(f"[{file_num}/{stats['total']}] Extracting frames from {video_path.name}...")
 
                 log_info(f"Processing video: {video_path.name}")
 
@@ -243,6 +247,10 @@ class BatchProcessor:
                     stats['failed'] += 1
                     cleanup_temp_folder(temp_folder)
                     continue
+
+                # Update status - creating GIF
+                if status_callback:
+                    status_callback(f"[{file_num}/{stats['total']}] Creating GIF from {len(frames)} frames ({video_path.name})...")
 
                 # Create GIF from frames
                 success, error = create_gif_from_frames(frames, output_path, settings)
@@ -339,15 +347,17 @@ class BatchProcessor:
                 if not is_test and output_path.exists():
                     log_info(f"Skipped {base_name} group (already processed)")
                     stats['skipped'] += 1
+                    file_num = i + 1
                     if status_callback:
-                        status_callback(f"Skipped {base_name} (already exists)")
+                        status_callback(f"[{file_num}/{stats['total']}] Skipped {base_name} (already exists)")
                     if progress_callback:
                         progress_callback(i + 1, stats['total'])
                     continue
 
                 # Update status
+                file_num = i + 1
                 if status_callback:
-                    status_callback(f"Processing {base_name} ({len(image_files)} frames)...")
+                    status_callback(f"[{file_num}/{stats['total']}] Creating GIF from {len(image_files)} images ({base_name})...")
 
                 log_info(f"Processing group: {base_name} ({len(image_files)} images)")
 
@@ -436,15 +446,17 @@ class BatchProcessor:
                 if not is_test and output_path.exists():
                     log_info(f"Skipped {gif_path.name} (already optimized)")
                     stats['skipped'] += 1
+                    file_num = i + 1
                     if status_callback:
-                        status_callback(f"Skipped {gif_path.name} (already exists)")
+                        status_callback(f"[{file_num}/{stats['total']}] Skipped {gif_path.name} (already exists)")
                     if progress_callback:
                         progress_callback(i + 1, stats['total'])
                     continue
 
                 # Update status
+                file_num = i + 1
                 if status_callback:
-                    status_callback(f"Optimizing {gif_path.name}...")
+                    status_callback(f"[{file_num}/{stats['total']}] Optimizing {gif_path.name}...")
 
                 log_info(f"Optimizing GIF: {gif_path.name}")
 

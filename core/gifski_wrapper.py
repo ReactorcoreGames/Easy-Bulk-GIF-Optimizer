@@ -2,6 +2,7 @@
 
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from typing import Optional, List
 from core.logger import log_info, log_error, log_debug
@@ -124,20 +125,59 @@ def create_gif_from_frames(
     Returns:
         Tuple of (success, error_message)
     """
+    temp_file = None
     try:
-        # Build command
-        cmd = build_gifski_command('frames', None, output_path, settings, frame_files)
+        # Build base command with options (no input files yet)
+        base_cmd = [str(GIFSKI_PATH), '-o', str(output_path)]
+        base_cmd.extend(['--quality', str(settings['quality'])])
+        if settings.get('width', 0) > 0:
+            base_cmd.extend(['--width', str(settings['width'])])
+        if settings.get('height', 0) > 0:
+            base_cmd.extend(['--height', str(settings['height'])])
+        base_cmd.extend(['--fps', str(settings['fps'])])
+        base_cmd.extend(['--lossy-quality', str(settings['lossy_quality'])])
+        base_cmd.extend(['--motion-quality', str(settings['motion_quality'])])
 
-        log_debug(f"Running gifski command: {' '.join(cmd[:10])}... ({len(frame_files)} frames)")
+        # For many frames, use shell glob pattern to avoid command line length limit
+        # Windows has a 32,767 character limit for command lines
+        if len(frame_files) > 50:
+            # All frames should be in the same directory
+            frames_dir = frame_files[0].parent
+            # Build command string with glob pattern (requires shell=True)
+            cmd_str = f'"{GIFSKI_PATH}" -o "{output_path}"'
+            cmd_str += f' --quality {settings["quality"]}'
+            if settings.get('width', 0) > 0:
+                cmd_str += f' --width {settings["width"]}'
+            if settings.get('height', 0) > 0:
+                cmd_str += f' --height {settings["height"]}'
+            cmd_str += f' --fps {settings["fps"]}'
+            cmd_str += f' --lossy-quality {settings["lossy_quality"]}'
+            cmd_str += f' --motion-quality {settings["motion_quality"]}'
+            cmd_str += f' "{frames_dir}\\frame*.png"'
 
-        # Run gifski
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=300,  # 5 minute timeout
-            creationflags=CREATE_NO_WINDOW
-        )
+            log_debug(f"Running gifski with glob pattern: {frames_dir}\\frame*.png ({len(frame_files)} frames)")
+
+            # Run with shell=True to enable glob expansion
+            result = subprocess.run(
+                cmd_str,
+                shell=True,
+                capture_output=True,
+                text=True,
+                timeout=300,
+                creationflags=CREATE_NO_WINDOW
+            )
+        else:
+            # For small number of frames, use direct file list
+            cmd = base_cmd + [str(f) for f in frame_files]
+            log_debug(f"Running gifski command: {' '.join(cmd[:10])}... ({len(frame_files)} frames)")
+
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=300,
+                creationflags=CREATE_NO_WINDOW
+            )
 
         if result.returncode == 0:
             log_info(f"Created GIF: {output_path.name}")

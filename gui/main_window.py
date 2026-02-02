@@ -43,7 +43,20 @@ class MainWindow:
     def __init__(self, root):
         self.root = root
         self.root.title("Easy Bulk GIF Optimizer")
-        self.root.geometry("900x900")  # Increased height by ~12.5%
+
+        # Set window size and position: 900x950 positioned 150px from top, centered horizontally
+        window_width = 900
+        window_height = 950  # Increased from 900 to 950 (50px taller)
+
+        # Get screen dimensions
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+
+        # Calculate position (centered horizontally, 100px from top)
+        x_position = (screen_width - window_width) // 2
+        y_position = 100  # Start 100px from top instead of default
+
+        self.root.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
         self.root.resizable(True, True)  # Allow window resizing
         self.root.minsize(800, 800)  # Set minimum size
 
@@ -398,21 +411,32 @@ class MainWindow:
         ToolTip(slider, text=tooltip, bootstyle=INFO)
 
     def _build_progress_section(self, parent):
-        """Build progress bar and status label."""
+        """Build progress section with status label and dual progress indicators."""
         progress_frame = ttk.Frame(parent)
         progress_frame.pack(fill=X, pady=(0, 15))
 
-        # Status label
+        # Status label (shows detailed operation info)
         self.status_label = ttk.Label(progress_frame,
                                       text="Ready to process",
                                       font=('Segoe UI', 10))
-        self.status_label.pack(fill=X, pady=(0, 5))
+        self.status_label.pack(fill=X, pady=(0, 10))
 
-        # Progress bar
-        self.progress_bar = ttk.Progressbar(progress_frame,
+        # Dual progress row: Activity indicator (left) + Overall progress bar (right)
+        progress_row = ttk.Frame(progress_frame)
+        progress_row.pack(fill=X)
+
+        # Compact activity indicator (indeterminate - shows "working" state)
+        self.activity_indicator = ttk.Progressbar(progress_row,
+                                                 mode='indeterminate',
+                                                 style='Violet.Horizontal.TProgressbar',
+                                                 length=80)  # Doubled size from 40 to 80
+        self.activity_indicator.pack(side=LEFT, padx=(0, 10))
+
+        # Overall batch progress bar (determinate - shows file progress)
+        self.progress_bar = ttk.Progressbar(progress_row,
                                            mode='determinate',
                                            style='Violet.Horizontal.TProgressbar')
-        self.progress_bar.pack(fill=X)
+        self.progress_bar.pack(side=LEFT, fill=X, expand=YES)
 
     def _build_action_buttons(self, parent):
         """Build action buttons (test, process, cancel, reset)."""
@@ -709,22 +733,30 @@ class MainWindow:
             stats = self.batch_processor.process_test_file()
 
             # Success message with mode-specific details
-            if mode == 'mode3' and stats.get('processed', 0) > 0:
+            processed = stats.get('processed', 0)
+            skipped = stats.get('skipped', 0)
+
+            if processed == 0 and skipped > 0:
+                # Nothing was processed (everything skipped)
+                message = f"✓ Test complete! File already exists (skipped)"
+                self._update_status_threadsafe(message)
+            elif mode == 'mode3' and processed > 0:
                 # Mode 3: Show size comparison
                 original = stats.get('original_size_mb', 0)
                 optimized = stats.get('optimized_size_mb', 0)
                 reduction = ((original - optimized) / original * 100) if original > 0 else 0
-                message = (f"✓ Test file generated! Check output folder\n"
-                          f"Size: {original:.2f} MB → {optimized:.2f} MB ({reduction:.1f}% reduction)")
+                message = f"✓ Test complete! {original:.2f} MB → {optimized:.2f} MB ({reduction:.1f}% reduction)"
                 self._update_status_threadsafe(message)
             else:
-                self._update_status_threadsafe("✓ Test file generated! Check output folder")
+                self._update_status_threadsafe("✓ Test file generated successfully!")
 
         except Exception as e:
             self._show_error_threadsafe(f"Error generating test file: {e}")
 
         finally:
             self._set_processing_state_threadsafe(False)
+            # Update file count after processing (in case new files were created)
+            self.root.after(100, self._update_file_count)  # Small delay to ensure files are written
 
     def _on_process_all(self):
         """Handle 'Process All Files' button click."""
@@ -761,22 +793,23 @@ class MainWindow:
             stats = self.batch_processor.process_all_files()
 
             # Success message with mode-specific details
-            if mode == 'mode3' and stats.get('processed', 0) > 0:
+            processed = stats.get('processed', 0)
+            skipped = stats.get('skipped', 0)
+            failed = stats.get('failed', 0)
+
+            if processed == 0 and skipped > 0 and failed == 0:
+                # Nothing was processed (everything skipped, nothing failed)
+                message = f"✓ Complete! All {skipped} file(s) already exist (skipped)"
+            elif mode == 'mode3' and processed > 0:
                 # Mode 3: Show size comparison
                 original = stats.get('original_size_mb', 0)
                 optimized = stats.get('optimized_size_mb', 0)
                 reduction = ((original - optimized) / original * 100) if original > 0 else 0
-                message = (f"✓ Processing complete!\n"
-                          f"Processed: {stats['processed']}\n"
-                          f"Skipped: {stats['skipped']}\n"
-                          f"Failed: {stats['failed']}\n"
-                          f"Size: {original:.2f} MB → {optimized:.2f} MB ({reduction:.1f}% reduction)")
+                message = (f"✓ Complete! Processed: {processed} | Skipped: {skipped} | Failed: {failed} | "
+                          f"Size saved: {original:.2f} MB → {optimized:.2f} MB ({reduction:.1f}% reduction)")
             else:
                 # Mode 1 & 2: Standard message
-                message = (f"✓ Processing complete!\n"
-                          f"Processed: {stats['processed']}\n"
-                          f"Skipped: {stats['skipped']}\n"
-                          f"Failed: {stats['failed']}")
+                message = f"✓ Complete! Processed: {processed} | Skipped: {skipped} | Failed: {failed}"
             self._update_status_threadsafe(message)
 
         except Exception as e:
@@ -784,6 +817,8 @@ class MainWindow:
 
         finally:
             self._set_processing_state_threadsafe(False)
+            # Update file count after processing (in case new files were created)
+            self.root.after(100, self._update_file_count)  # Small delay to ensure files are written
 
     def _on_cancel(self):
         """Handle 'Cancel' button click."""
@@ -798,10 +833,9 @@ class MainWindow:
         self._update_progress_threadsafe(progress, message)
 
     def _on_log(self, message):
-        """Callback for log messages from batch processor."""
-        # Log messages are already written to file by logger
-        # We could display them in status if needed
-        pass
+        """Callback for status/log messages from batch processor."""
+        # Update status label with detailed processing messages
+        self._update_status_threadsafe(message)
 
     def _update_status(self, message):
         """Update status label."""
@@ -813,6 +847,10 @@ class MainWindow:
 
     def _update_file_count(self):
         """Update file count label to show all file types found in input folder."""
+        # Don't update during processing to avoid confusion
+        if self.is_processing:
+            return
+
         input_folder_path = self.input_folder.get()
         if not input_folder_path:
             self.file_count_label.config(text="Found: 0 videos, 0 images, 0 gifs")
@@ -835,9 +873,11 @@ class MainWindow:
                 text=f"Found: {video_count} videos, {image_count} images, {gif_count} gifs"
             )
 
-            # Log folder selection with counts
-            log_info(f"Input folder selected: {input_folder_path} - "
-                    f"Found {video_count} videos, {image_count} images, {gif_count} gifs")
+            # Only log if this is a manual folder selection (not post-processing update)
+            if not hasattr(self, '_last_logged_count') or self._last_logged_count != (video_count, image_count, gif_count):
+                log_info(f"Input folder selected: {input_folder_path} - "
+                        f"Found {video_count} videos, {image_count} images, {gif_count} gifs")
+                self._last_logged_count = (video_count, image_count, gif_count)
 
         except Exception as e:
             log_info(f"Error scanning input folder: {e}")
@@ -852,18 +892,23 @@ class MainWindow:
         self.root.after(0, update)
 
     def _set_processing_state(self, is_processing):
-        """Enable/disable buttons based on processing state."""
+        """Enable/disable buttons and control activity indicator based on processing state."""
         self.is_processing = is_processing
 
         if is_processing:
             self.test_btn.config(state=DISABLED)
             self.process_btn.config(state=DISABLED)
             self.cancel_btn.config(state=NORMAL)
+            # Start activity indicator animation
+            self.activity_indicator.start(8)  # 8ms interval for very fast animation
         else:
             self.test_btn.config(state=NORMAL)
             self.process_btn.config(state=NORMAL)
             self.cancel_btn.config(state=DISABLED)
+            # Stop activity indicator and reset progress bar
+            self.activity_indicator.stop()
             self.progress_bar['value'] = 0
+            # DON'T reset status text here - let completion messages persist
 
     def _set_processing_state_threadsafe(self, is_processing):
         """Set processing state from background thread."""

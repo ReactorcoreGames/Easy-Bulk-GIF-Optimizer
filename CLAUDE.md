@@ -1,6 +1,6 @@
 # Easy Bulk GIF Optimizer - Developer Reference
 
-**Last Updated:** 2026-01-20
+**Last Updated:** 2026-02-02
 **Status:** Complete and ready for distribution
 
 ---
@@ -61,6 +61,7 @@ log.txt                      # Application log (auto-created)
 - **Comprehensive logging** - Auto-creates log.txt on startup, all logs append to single file in program directory
 - **Scrollable interface** - Vertical scrollbar prevents UI elements from being cut off
 - **Keep temp files option** - Checkbox to preserve extracted video frames (Mode 1 only, enabled by default)
+- **Dual progress feedback** - Animated activity indicator + batch progress bar with detailed status messages
 
 ---
 
@@ -217,6 +218,42 @@ FFmpeg must be installed separately for Mode 1 (Video → GIF).
 ---
 
 ## Recent Updates
+
+### 2026-02-02 (Latest)
+
+#### New Feature: Enhanced Progress Feedback
+**Dual-progress UI with detailed status updates** - Significantly improved visual feedback during processing:
+
+**What's New:**
+- **Dual Progress Indicators:**
+  - Compact animated activity indicator (shows "working" state)
+  - Full-width progress bar (shows overall batch progress)
+- **Detailed Status Messages:**
+  - Real-time operation updates: "Extracting frames from video.mp4...", "Creating GIF from 1079 frames..."
+  - File progress tracking: "[2/5] Extracting frames from..."
+  - Operation-specific feedback for each processing step
+- **Streamlined Completion Messages:**
+  - Single-line summary: "✓ Complete! Processed: 5 | Skipped: 2 | Failed: 0"
+  - Mode 3 shows size savings: "Size saved: 10.5 MB → 7.2 MB (31.4% reduction)"
+
+**Technical Changes:**
+- Updated `_build_progress_section()` in `main_window.py` to add dual progress row
+- Added `activity_indicator` (indeterminate progressbar) that animates during processing
+- Enhanced status callbacks in `batch_processor.py` to send detailed operation messages
+- Updated `_set_processing_state()` to control activity indicator (start/stop animation)
+- Improved completion messages for cleaner, more informative output
+- Updated `_on_log()` callback to display real-time status updates
+
+### 2026-02-02 (Earlier)
+
+#### Bug Fix:
+**Fixed Windows command line length limit error** - Fixed `[WinError 206] The filename or extension is too long` error when processing videos with many frames (1000+). The issue occurred because gifski was being called with all frame paths as individual command-line arguments, which exceeded Windows' 32,767 character limit. Now for videos with more than 50 frames, the application uses a shell glob pattern (`frame*.png`) instead of individual file paths, which works around the command line length restriction. This allows processing of longer videos without errors.
+
+**Technical Changes:**
+- Updated `create_gif_from_frames()` in `gifski_wrapper.py` to detect large frame counts
+- For >50 frames, uses `shell=True` with glob pattern to avoid command line length limits
+- For ≤50 frames, continues using direct file list (original behavior)
+- Added `tempfile` import (though not currently used, kept for future enhancements)
 
 ### 2026-01-20 (Latest - Evening)
 
